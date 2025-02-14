@@ -54,9 +54,7 @@ pipeline {
     	}
 	   
 	stage('Kubernetes Deployment of ASG Bugg Web Application') {
-		when {
-                expression { env.SKIP_TESTS == false } // Skip if SKIP_TESTS is true
-            }
+		
 	   steps {
 	      withKubeConfig([credentialsId: 'kubelogin']) {
 		  sh('kubectl delete all --all -n devsecops')
